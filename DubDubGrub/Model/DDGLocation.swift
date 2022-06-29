@@ -8,8 +8,6 @@
 import CloudKit
 import UIKit
 
-
-
 struct DDGLocation: Identifiable {
     
     let id: CKRecord.ID
@@ -44,16 +42,16 @@ struct DDGLocation: Identifiable {
         return asset.convertToUIImage(in: .banner)
     }
 }
-    // MARK: - Extensions
-    
-    extension DDGLocation {
-        
-        static let kName        = "name"
-        static let kDescription = "description"
-        static let kAddress     = "address"
-        static let kPhoneNumber = "phoneNumber"
-        static let kWebsiteURL  = "websiteURL"
-        static let kLocation    = "location"
-        static let kBannerAsset = "bannerAsset"
-        static let kSquareAsset = "squareAsset"
-    }
+
+
+// MARK: - Extensions
+extension DDGLocation {
+    static let kName        = "name"
+    static let kDescription = "description"
+    static let kAddress     = "address"
+    static let kPhoneNumber = "phoneNumber"
+    static let kWebsiteURL  = "websiteURL"
+    static let kLocation    = "location"
+    static let kBannerAsset = "bannerAsset"
+    static let kSquareAsset = "squareAsset"
+}

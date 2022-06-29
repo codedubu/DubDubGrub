@@ -119,9 +119,28 @@
 				792E65B7286BE8060041973C /* CloudKitManager.swift */,
 				7908BEE0286BF40C007D2265 /* AlertItem.swift */,
 				79B2CA53286A32B400F8928F /* Helpers and Extensions */,
-				792E65BA286BE91F0041973C /* Constants.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		798D9767286CCB7B00C7ECFC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				792E655A286AAD260041973C /* CustomModifiers.swift */,
+				792E65BA286BE91F0041973C /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		798D9768286CCB8300C7ECFC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				79B2CA49286A306200F8928F /* Color+Ext.swift */,
+				792E655C286AAD340041973C /* View+Ext.swift */,
+				7908BEDE286BF14A007D2265 /* CKRecord+Ext.swift */,
+				798D9765286CBC1800C7ECFC /* CKAsset+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		79B2CA2B286A2C4300F8928F = {
@@ -175,11 +194,8 @@
 		79B2CA53286A32B400F8928F /* Helpers and Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				79B2CA49286A306200F8928F /* Color+Ext.swift */,
-				792E655C286AAD340041973C /* View+Ext.swift */,
-				792E655A286AAD260041973C /* CustomModifiers.swift */,
-				7908BEDE286BF14A007D2265 /* CKRecord+Ext.swift */,
-				798D9765286CBC1800C7ECFC /* CKAsset+Ext.swift */,
+				798D9768286CCB8300C7ECFC /* Extensions */,
+				798D9767286CCB7B00C7ECFC /* Helpers */,
 			);
 			path = "Helpers and Extensions";
 			sourceTree = "<group>";
@@ -453,6 +469,7 @@
 				DEVELOPMENT_TEAM = 7VVA7JF63G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"DubDubGrub uses your location to show you where you are in relation to your friends and food. Please allow the use of your location.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -483,6 +500,7 @@
 				DEVELOPMENT_TEAM = 7VVA7JF63G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"DubDubGrub uses your location to show you where you are in relation to your friends and food. Please allow the use of your location.\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -18,7 +18,7 @@ struct LocationCell: View {
             Image(uiImage: location.squareImage)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 80, height: 80)
+                .frame(width: 90, height: 90)
                 .clipShape(Circle())
                 .padding(.vertical, 8)
             
