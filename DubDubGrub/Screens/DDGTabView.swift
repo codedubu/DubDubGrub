@@ -47,5 +47,6 @@ struct DDGTabView: View {
 struct DDGTabView_Previews: PreviewProvider {
     static var previews: some View {
         DDGTabView()
+            .environmentObject(LocationManager())
     }
 }

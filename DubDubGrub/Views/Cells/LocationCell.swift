@@ -14,19 +14,22 @@ struct LocationCell: View {
     var body: some View {
         
         HStack {
-            Image("default-square-asset")
+            
+            Image(uiImage: location.squareImage)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 80, height: 80)
                 .clipShape(Circle())
                 .padding(.vertical, 8)
+            
             VStack(alignment: .leading) {
                 Text(location.name)
                     .font(.title2)
                     .fontWeight(.semibold)
                     .lineLimit(1)
-                    .minimumScaleFactor(0.75)
+                    .minimumScaleFactor(0.50)
                     .padding(.trailing)
+                
                 HStack {
                     AvatarView(size: 34)
                     AvatarView(size: 34)
@@ -35,7 +38,8 @@ struct LocationCell: View {
                     AvatarView(size: 34)
                 }
             }
-            .padding(.leading)
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+            .padding(.leading, 14)
         }
     }
 }

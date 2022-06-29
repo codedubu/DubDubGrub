@@ -22,6 +22,7 @@
 		792E65B6286BCE750041973C /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E65B5286BCE750041973C /* MockData.swift */; };
 		792E65B8286BE8060041973C /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E65B7286BE8060041973C /* CloudKitManager.swift */; };
 		792E65BB286BE91F0041973C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E65BA286BE91F0041973C /* Constants.swift */; };
+		798D9766286CBC1800C7ECFC /* CKAsset+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798D9765286CBC1800C7ECFC /* CKAsset+Ext.swift */; };
 		79B2CA38286A2C4300F8928F /* DubDubGrubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B2CA37286A2C4300F8928F /* DubDubGrubApp.swift */; };
 		79B2CA3C286A2C4400F8928F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79B2CA3B286A2C4400F8928F /* Assets.xcassets */; };
 		79B2CA3F286A2C4400F8928F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79B2CA3E286A2C4400F8928F /* Preview Assets.xcassets */; };
@@ -49,6 +50,7 @@
 		792E65B5286BCE750041973C /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		792E65B7286BE8060041973C /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		792E65BA286BE91F0041973C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		798D9765286CBC1800C7ECFC /* CKAsset+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKAsset+Ext.swift"; sourceTree = "<group>"; };
 		79B2CA34286A2C4300F8928F /* DubDubGrub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DubDubGrub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B2CA37286A2C4300F8928F /* DubDubGrubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DubDubGrubApp.swift; sourceTree = "<group>"; };
 		79B2CA3B286A2C4400F8928F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,9 +144,9 @@
 		79B2CA36286A2C4300F8928F /* DubDubGrub */ = {
 			isa = PBXGroup;
 			children = (
-				792E65B0286BC7BA0041973C /* Model */,
 				79B2CA45286A2DE900F8928F /* DubDubGrub.entitlements */,
 				79B2CA37286A2C4300F8928F /* DubDubGrubApp.swift */,
+				792E65B0286BC7BA0041973C /* Model */,
 				792E6560286AB1300041973C /* Views */,
 				79B2CA54286A32C600F8928F /* Screens */,
 				792E65B9286BE80F0041973C /* Utilities */,
@@ -177,6 +179,7 @@
 				792E655C286AAD340041973C /* View+Ext.swift */,
 				792E655A286AAD260041973C /* CustomModifiers.swift */,
 				7908BEDE286BF14A007D2265 /* CKRecord+Ext.swift */,
+				798D9765286CBC1800C7ECFC /* CKAsset+Ext.swift */,
 			);
 			path = "Helpers and Extensions";
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				792E65B2286BC7CF0041973C /* DDGLocation.swift in Sources */,
 				79B2CA38286A2C4300F8928F /* DubDubGrubApp.swift in Sources */,
 				79B2CA52286A312B00F8928F /* ProfileView.swift in Sources */,
+				798D9766286CBC1800C7ECFC /* CKAsset+Ext.swift in Sources */,
 				792E65B8286BE8060041973C /* CloudKitManager.swift in Sources */,
 				7908BEE1286BF40C007D2265 /* AlertItem.swift in Sources */,
 				792E655D286AAD340041973C /* View+Ext.swift in Sources */,

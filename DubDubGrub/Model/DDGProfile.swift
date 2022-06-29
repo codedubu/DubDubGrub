@@ -8,16 +8,7 @@
 import CloudKit
 
 struct DDGProfile {
-    
-    static let kFirstName   = "firstName"
-    static let kLastName    = "lastName"
-    static let kBio         = "bio"
-    static let kCompanyName = "companyName"
-    static let kAvatarAsset = "avatarAsset"
-    static let kIsCheckedIn = "isCheckedIn"
-
-
-    
+        
     let ckRecordID: CKRecord.ID
     let firstName: String
     let lastName: String
@@ -35,3 +26,17 @@ struct DDGProfile {
         avatarAsset = record[DDGProfile.kAvatarAsset] as? CKAsset
     }
 }
+
+
+// MARK: - Extensions
+
+extension DDGProfile {
+    
+    static let kFirstName   = "firstName"
+    static let kLastName    = "lastName"
+    static let kBio         = "bio"
+    static let kCompanyName = "companyName"
+    static let kAvatarAsset = "avatarAsset"
+    static let kIsCheckedIn = "isCheckedIn"
+}
+

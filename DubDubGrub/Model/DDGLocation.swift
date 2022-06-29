@@ -6,20 +6,11 @@
 //
 
 import CloudKit
+import UIKit
 
 
 
 struct DDGLocation: Identifiable {
-    
-    static let kName        = "name"
-    static let kDescription = "description"
-    static let kAddress     = "address"
-    static let kPhoneNumber = "phoneNumber"
-    static let kWebsiteURL  = "websiteURL"
-    static let kLocation    = "location"
-    static let kBannerAsset = "bannerAsset"
-    static let kSquareAsset = "squareAsset"
-
     
     let id: CKRecord.ID
     let name: String
@@ -30,7 +21,7 @@ struct DDGLocation: Identifiable {
     let location: CLLocation
     let bannerAsset: CKAsset!
     let squareAsset: CKAsset!
-
+    
     init(record: CKRecord) {
         id          = record.recordID
         name        = record[DDGLocation.kName] as? String ?? "N/A"
@@ -42,5 +33,27 @@ struct DDGLocation: Identifiable {
         bannerAsset = record[DDGLocation.kBannerAsset] as? CKAsset
         squareAsset = record[DDGLocation.kSquareAsset] as? CKAsset
     }
-
+    
+    var squareImage: UIImage {
+        guard let asset = squareAsset else { return PlaceholderImage.square }
+        return asset.convertToUIImage(in: .square)
+    }
+    
+    var bannerImage: UIImage {
+        guard let asset = bannerAsset else { return PlaceholderImage.banner }
+        return asset.convertToUIImage(in: .banner)
+    }
 }
+    // MARK: - Extensions
+    
+    extension DDGLocation {
+        
+        static let kName        = "name"
+        static let kDescription = "description"
+        static let kAddress     = "address"
+        static let kPhoneNumber = "phoneNumber"
+        static let kWebsiteURL  = "websiteURL"
+        static let kLocation    = "location"
+        static let kBannerAsset = "bannerAsset"
+        static let kSquareAsset = "squareAsset"
+    }
