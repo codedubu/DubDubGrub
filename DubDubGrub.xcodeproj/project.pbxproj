@@ -13,6 +13,9 @@
 		792E655B286AAD260041973C /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E655A286AAD260041973C /* CustomModifiers.swift */; };
 		792E655D286AAD340041973C /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E655C286AAD340041973C /* View+Ext.swift */; };
 		792E655F286AAE8F0041973C /* DDGButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E655E286AAE8F0041973C /* DDGButton.swift */; };
+		792E65B2286BC7CF0041973C /* DDGLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E65B1286BC7CF0041973C /* DDGLocation.swift */; };
+		792E65B4286BCC690041973C /* DDGProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E65B3286BCC690041973C /* DDGProfile.swift */; };
+		792E65B6286BCE750041973C /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E65B5286BCE750041973C /* MockData.swift */; };
 		79B2CA38286A2C4300F8928F /* DubDubGrubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B2CA37286A2C4300F8928F /* DubDubGrubApp.swift */; };
 		79B2CA3C286A2C4400F8928F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79B2CA3B286A2C4400F8928F /* Assets.xcassets */; };
 		79B2CA3F286A2C4400F8928F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79B2CA3E286A2C4400F8928F /* Preview Assets.xcassets */; };
@@ -31,6 +34,9 @@
 		792E655A286AAD260041973C /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
 		792E655C286AAD340041973C /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		792E655E286AAE8F0041973C /* DDGButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDGButton.swift; sourceTree = "<group>"; };
+		792E65B1286BC7CF0041973C /* DDGLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDGLocation.swift; sourceTree = "<group>"; };
+		792E65B3286BCC690041973C /* DDGProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDGProfile.swift; sourceTree = "<group>"; };
+		792E65B5286BCE750041973C /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		79B2CA34286A2C4300F8928F /* DubDubGrub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DubDubGrub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B2CA37286A2C4300F8928F /* DubDubGrubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DubDubGrubApp.swift; sourceTree = "<group>"; };
 		79B2CA3B286A2C4400F8928F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +88,16 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
+		792E65B0286BC7BA0041973C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				792E65B1286BC7CF0041973C /* DDGLocation.swift */,
+				792E65B3286BCC690041973C /* DDGProfile.swift */,
+				792E65B5286BCE750041973C /* MockData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		79B2CA2B286A2C4300F8928F = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +118,7 @@
 		79B2CA36286A2C4300F8928F /* DubDubGrub */ = {
 			isa = PBXGroup;
 			children = (
+				792E65B0286BC7BA0041973C /* Model */,
 				79B2CA45286A2DE900F8928F /* DubDubGrub.entitlements */,
 				79B2CA37286A2C4300F8928F /* DubDubGrubApp.swift */,
 				792E6560286AB1300041973C /* Views */,
@@ -257,7 +274,10 @@
 				792E655B286AAD260041973C /* CustomModifiers.swift in Sources */,
 				79B2CA4E286A30F600F8928F /* LocationMapView.swift in Sources */,
 				792E6554286A41080041973C /* LocationDetailView.swift in Sources */,
+				792E65B6286BCE750041973C /* MockData.swift in Sources */,
 				79B2CA50286A311400F8928F /* LocationListView.swift in Sources */,
+				792E65B4286BCC690041973C /* DDGProfile.swift in Sources */,
+				792E65B2286BC7CF0041973C /* DDGLocation.swift in Sources */,
 				79B2CA38286A2C4300F8928F /* DubDubGrubApp.swift in Sources */,
 				79B2CA52286A312B00F8928F /* ProfileView.swift in Sources */,
 				792E655D286AAD340041973C /* View+Ext.swift in Sources */,

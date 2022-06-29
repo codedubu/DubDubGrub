@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LocationCell: View {
     
+    var location: DDGLocation
+    
     var body: some View {
         
         HStack {
@@ -19,18 +21,18 @@ struct LocationCell: View {
                 .clipShape(Circle())
                 .padding(.vertical, 8)
             VStack(alignment: .leading) {
-                Text("Testing Location Name")
+                Text(location.name)
                     .font(.title2)
                     .fontWeight(.semibold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.75)
                     .padding(.trailing)
                 HStack {
-                    AvatarView(size: 29)
-                    AvatarView(size: 29)
-                    AvatarView(size: 29)
-                    AvatarView(size: 29)
-                    AvatarView(size: 29)
+                    AvatarView(size: 34)
+                    AvatarView(size: 34)
+                    AvatarView(size: 34)
+                    AvatarView(size: 34)
+                    AvatarView(size: 34)
                 }
             }
             .padding(.leading)
@@ -40,6 +42,6 @@ struct LocationCell: View {
 
 struct LocationCell_Previews: PreviewProvider {
     static var previews: some View {
-        LocationCell()
+        LocationCell(location: DDGLocation(record: MockData.location))
     }
 }
