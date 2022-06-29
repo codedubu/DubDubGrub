@@ -9,7 +9,7 @@ import CloudKit
 
 
 
-struct DDGLocation {
+struct DDGLocation: Identifiable {
     
     static let kName        = "name"
     static let kDescription = "description"
@@ -21,7 +21,7 @@ struct DDGLocation {
     static let kSquareAsset = "squareAsset"
 
     
-    let ckRecordID: CKRecord.ID
+    let id: CKRecord.ID
     let name: String
     let description: String
     let address: String
@@ -32,7 +32,7 @@ struct DDGLocation {
     let squareAsset: CKAsset!
 
     init(record: CKRecord) {
-        ckRecordID  = record.recordID
+        id          = record.recordID
         name        = record[DDGLocation.kName] as? String ?? "N/A"
         description = record[DDGLocation.kDescription] as? String ?? "N/A"
         address     = record[DDGLocation.kAddress] as? String ?? "N/A"
