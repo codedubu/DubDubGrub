@@ -31,11 +31,11 @@ struct LocationCell: View {
                     .padding(.trailing)
                 
                 HStack {
-                    AvatarView(size: 34)
-                    AvatarView(size: 34)
-                    AvatarView(size: 34)
-                    AvatarView(size: 34)
-                    AvatarView(size: 34)
+                    AvatarView(image: PlaceholderImage.avatar, size: 34)
+                    AvatarView(image: PlaceholderImage.avatar, size: 34)
+                    AvatarView(image: PlaceholderImage.avatar, size: 34)
+                    AvatarView(image: PlaceholderImage.avatar, size: 34)
+                    AvatarView(image: PlaceholderImage.avatar, size: 34)
                 }
             }
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
