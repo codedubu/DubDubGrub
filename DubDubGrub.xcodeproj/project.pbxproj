@@ -23,6 +23,9 @@
 		792E65B8286BE8060041973C /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E65B7286BE8060041973C /* CloudKitManager.swift */; };
 		792E65BB286BE91F0041973C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792E65BA286BE91F0041973C /* Constants.swift */; };
 		798D9766286CBC1800C7ECFC /* CKAsset+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798D9765286CBC1800C7ECFC /* CKAsset+Ext.swift */; };
+		798D976B286CD28F00C7ECFC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798D976A286CD28F00C7ECFC /* OnboardingView.swift */; };
+		798D976D286CD82E00C7ECFC /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798D976C286CD82E00C7ECFC /* LogoView.swift */; };
+		798D9770286CDA8600C7ECFC /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798D976F286CDA8600C7ECFC /* XDismissButton.swift */; };
 		79B2CA38286A2C4300F8928F /* DubDubGrubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B2CA37286A2C4300F8928F /* DubDubGrubApp.swift */; };
 		79B2CA3C286A2C4400F8928F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79B2CA3B286A2C4400F8928F /* Assets.xcassets */; };
 		79B2CA3F286A2C4400F8928F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79B2CA3E286A2C4400F8928F /* Preview Assets.xcassets */; };
@@ -51,6 +54,9 @@
 		792E65B7286BE8060041973C /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		792E65BA286BE91F0041973C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		798D9765286CBC1800C7ECFC /* CKAsset+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKAsset+Ext.swift"; sourceTree = "<group>"; };
+		798D976A286CD28F00C7ECFC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		798D976C286CD82E00C7ECFC /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		798D976F286CDA8600C7ECFC /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
 		79B2CA34286A2C4300F8928F /* DubDubGrub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DubDubGrub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B2CA37286A2C4300F8928F /* DubDubGrubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DubDubGrubApp.swift; sourceTree = "<group>"; };
 		79B2CA3B286A2C4400F8928F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,8 +102,9 @@
 		792E6563286AB1600041973C /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				792E655E286AAE8F0041973C /* DDGButton.swift */,
+				798D976E286CDA7A00C7ECFC /* Buttons */,
 				792E6558286AA6060041973C /* AvatarView.swift */,
+				798D976C286CD82E00C7ECFC /* LogoView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -141,6 +148,23 @@
 				798D9765286CBC1800C7ECFC /* CKAsset+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		798D9769286CD28200C7ECFC /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				798D976A286CD28F00C7ECFC /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		798D976E286CDA7A00C7ECFC /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				792E655E286AAE8F0041973C /* DDGButton.swift */,
+				798D976F286CDA8600C7ECFC /* XDismissButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		79B2CA2B286A2C4300F8928F = {
@@ -203,6 +227,7 @@
 		79B2CA54286A32C600F8928F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				798D9769286CD28200C7ECFC /* Onboarding */,
 				79B2CA4B286A30C400F8928F /* DDGTabView.swift */,
 				79B2CA55286A32DF00F8928F /* LocationMapView */,
 				79B2CA56286A32E400F8928F /* LocationListView */,
@@ -328,6 +353,8 @@
 				79B2CA38286A2C4300F8928F /* DubDubGrubApp.swift in Sources */,
 				79B2CA52286A312B00F8928F /* ProfileView.swift in Sources */,
 				798D9766286CBC1800C7ECFC /* CKAsset+Ext.swift in Sources */,
+				798D976D286CD82E00C7ECFC /* LogoView.swift in Sources */,
+				798D9770286CDA8600C7ECFC /* XDismissButton.swift in Sources */,
 				792E65B8286BE8060041973C /* CloudKitManager.swift in Sources */,
 				7908BEE1286BF40C007D2265 /* AlertItem.swift in Sources */,
 				792E655D286AAD340041973C /* View+Ext.swift in Sources */,
@@ -336,6 +363,7 @@
 				7908BEE5286C06AD007D2265 /* LocationManager.swift in Sources */,
 				792E655F286AAE8F0041973C /* DDGButton.swift in Sources */,
 				792E6559286AA6060041973C /* AvatarView.swift in Sources */,
+				798D976B286CD28F00C7ECFC /* OnboardingView.swift in Sources */,
 				79B2CA4A286A306200F8928F /* Color+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

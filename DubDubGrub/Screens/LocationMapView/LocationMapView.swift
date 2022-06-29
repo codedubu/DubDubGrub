@@ -23,14 +23,17 @@ struct LocationMapView: View {
             .ignoresSafeArea()
             
             VStack {
-                LogoView()
+                LogoView(frameWidth: 125)
                     .shadow(radius: 20)
                 
                 Spacer()
             }
         }
+        .sheet(isPresented: $viewModel.isShowingOnboardingView, onDismiss: viewModel.checkIfLocationServicesIsEnabled) {
+            OnboardingView(isShowingOnboardingView: $viewModel.isShowingOnboardingView)
+        }
         .onAppear {
-            viewModel.checkIfLocationServicesIsEnabled()
+            viewModel.runStartupChecks()
             
             if locationManager.locations.isEmpty {
                 viewModel.getLocations(for: locationManager)
@@ -45,14 +48,5 @@ struct LocationMapView: View {
 struct LocationMapView_Previews: PreviewProvider {
     static var previews: some View {
         LocationMapView()
-    }
-}
-
-struct LogoView: View {
-    var body: some View {
-        Image("ddg-map-logo")
-            .resizable()
-            .scaledToFit()
-            .frame(height: 70)
     }
 }
