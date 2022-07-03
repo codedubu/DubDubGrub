@@ -75,7 +75,7 @@ struct ProfileView: View {
             Spacer()
             
             Button {
-                createProfile()
+                //                createProfile()
             } label: {
                 DDGButton(title: "Save Profile")
             }
@@ -90,6 +90,7 @@ struct ProfileView: View {
                 Image(systemName: "keyboard.chevron.compact.down")
             }
         }
+        .onAppear { getProfile() }
         .alert(item: $alertItem) { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
         }
@@ -97,7 +98,6 @@ struct ProfileView: View {
             PhotoPicker(image: $avatar)
         }
     }
-    
     
     func isValidProfile() -> Bool {
         guard !firstName.isEmpty,
@@ -123,7 +123,7 @@ struct ProfileView: View {
         profileRecord[DDGProfile.kCompanyName]  = companyName
         profileRecord[DDGProfile.kBio]          = bio
         profileRecord[DDGProfile.kAvatarAsset]  = avatar.convertToCKAsset()
-
+        
         // Get our UserRecordID from the Container
         CKContainer.default().fetchUserRecordID { recordID, error in
             guard let recordID = recordID, error == nil else {
@@ -152,7 +152,46 @@ struct ProfileView: View {
                 // task.resume()
                 CKContainer.default().publicCloudDatabase.add(operation)
             }
-
+            
+        }
+    }
+    
+    func getProfile() {
+        // Get our UserRecord, this is what ties us to our profile
+        CKContainer.default().fetchUserRecordID { recordID, error in
+            guard let recordID = recordID, error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            CKContainer.default().publicCloudDatabase.fetch(withRecordID: recordID) { userRecord, error in
+                guard let userRecord = userRecord, error == nil else {
+                    print(error!.localizedDescription)
+                    return
+                }
+                
+                // Now that we have our UserRecord, grab the reference to the profile.
+                let profileReference = userRecord["userProfile"] as! CKRecord.Reference
+                let profileRecordID = profileReference.recordID
+                
+                // Fetch from the publicCloudDatabase using our profileRecordID
+                CKContainer.default().publicCloudDatabase.fetch(withRecordID: profileRecordID) { profileRecord, error in
+                    guard let profileRecord = profileRecord, error == nil else {
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    
+                    // Once we get our information, populate the profile with all of this information.
+                    DispatchQueue.main.async {
+                        let profile = DDGProfile(record: profileRecord)
+                        firstName   = profile.firstName
+                        lastName    = profile.lastName
+                        companyName = profile.companyName
+                        bio         = profile.bio
+                        avatar      = profile.avatarImage
+                    }
+                }
+            }
         }
     }
 }
