@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct ProfileView: View {
     
@@ -15,6 +16,7 @@ struct ProfileView: View {
     @State private var bio                  = ""
     @State private var avatar               = PlaceholderImage.avatar
     @State private var isShowingPhotoPicker = false
+    @State private var alertItem: AlertItem?
     
     var body: some View {
         
@@ -45,7 +47,7 @@ struct ProfileView: View {
                 }
                 .padding()
             }
-                        
+            
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     CharactersRemainView(currentCount: bio.count)
@@ -73,22 +75,87 @@ struct ProfileView: View {
             Spacer()
             
             Button {
-                
+                createProfile()
             } label: {
                 DDGButton(title: "Save Profile")
             }
             .buttonStyling()
-            
-            
+            .padding(.bottom)
         }
         .navigationTitle("Profile")
+        .toolbar {
+            Button {
+                dismissKeyboard()
+            } label: {
+                Image(systemName: "keyboard.chevron.compact.down")
+            }
+        }
+        .alert(item: $alertItem) { alertItem in
+            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
+        }
         .sheet(isPresented: $isShowingPhotoPicker) {
             PhotoPicker(image: $avatar)
         }
     }
     
-}
+    
+    func isValidProfile() -> Bool {
+        guard !firstName.isEmpty,
+              !lastName.isEmpty,
+              !companyName.isEmpty,
+              !bio.isEmpty,
+              avatar != PlaceholderImage.avatar,
+              bio.count < 100 else { return false }
+        
+        return true
+    }
+    
+    func createProfile() {
+        guard isValidProfile() else {
+            alertItem = AlertContext.invalidProfile
+            return
+        }
+        
+        // Create our CKRecord from the data gathered from our Profile View
+        let profileRecord = CKRecord(recordType: RecordType.profile)
+        profileRecord[DDGProfile.kFirstName]    = firstName
+        profileRecord[DDGProfile.kLastName]     = lastName
+        profileRecord[DDGProfile.kCompanyName]  = companyName
+        profileRecord[DDGProfile.kBio]          = bio
+        profileRecord[DDGProfile.kAvatarAsset]  = avatar.convertToCKAsset()
 
+        // Get our UserRecordID from the Container
+        CKContainer.default().fetchUserRecordID { recordID, error in
+            guard let recordID = recordID, error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            // Get UserRecord from the Public Database
+            CKContainer.default().publicCloudDatabase.fetch(withRecordID: recordID) { userRecord, error in
+                guard let userRecord = userRecord, error == nil else {
+                    print(error!.localizedDescription)
+                    return
+                }
+                // Create reference on UserRecord to the DDGProfile we created
+                userRecord["userProfile"] = CKRecord.Reference(recordID: profileRecord.recordID, action: .none)
+                // Create a CKOperation to save our User and Profile Records.
+                let operation = CKModifyRecordsOperation(recordsToSave: [userRecord, profileRecord])
+                operation.modifyRecordsCompletionBlock = { savedRecords, _, error in
+                    guard let savedRecords = savedRecords, error == nil else {
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    
+                    print(savedRecords)
+                }
+                // task.resume()
+                CKContainer.default().publicCloudDatabase.add(operation)
+            }
+
+        }
+    }
+}
 
 
 struct ProfileView_Previews: PreviewProvider {
@@ -137,6 +204,5 @@ struct CharactersRemainView: View {
         Text(" characters remain.")
             .font(.callout)
             .foregroundColor(.secondary)
-        
     }
 }

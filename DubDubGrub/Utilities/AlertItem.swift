@@ -22,14 +22,19 @@ struct AlertContext {
                                             message: Text("Unable to retrieve locations at this time.\nPlease try again"),
                                             dismissButton: .default(Text("Ok")))
     
-    static let locationRestricted = AlertItem(title: Text("Locations Restricted"),
+    static let locationRestricted   = AlertItem(title: Text("Locations Restricted"),
                                               message: Text("Your location is restricted. This may be due to parental controls."),
                                               dismissButton: .default(Text("Ok")))
-    static let locationDenied = AlertItem(title: Text("Locations Denied"),
+    static let locationDenied       = AlertItem(title: Text("Locations Denied"),
                                               message: Text("DubDubGrub does not have permission to access your location.\nGo to your phone's Settings -> DubDubGrub -> Location"),
                                               dismissButton: .default(Text("Ok")))
     
-    static let locationDisabled = AlertItem(title: Text("Locations Disabled"),
+    static let locationDisabled     = AlertItem(title: Text("Locations Disabled"),
                                               message: Text("DubDubGrub does not have permission to access your location.\nGo to your phone's Settings -> Privacy -> Location Services"),
                                               dismissButton: .default(Text("Ok")))
+    
+    // MARK: - ProfileView Errors
+    static let invalidProfile      = AlertItem(title: Text("Invalid Profile"),
+                                            message: Text("All fields are required as well as a profile photo. Your bio less than 100 characters.\nPlease try again."),
+                                            dismissButton: .default(Text("Ok")))
 }

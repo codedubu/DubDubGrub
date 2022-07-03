@@ -36,6 +36,7 @@
 		79B2CA4E286A30F600F8928F /* LocationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B2CA4D286A30F600F8928F /* LocationMapView.swift */; };
 		79B2CA50286A311400F8928F /* LocationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B2CA4F286A311400F8928F /* LocationListView.swift */; };
 		79B2CA52286A312B00F8928F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B2CA51286A312B00F8928F /* ProfileView.swift */; };
+		79EF159D2872266600E13ACF /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EF159C2872266600E13ACF /* UIImage+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		79B2CA4D286A30F600F8928F /* LocationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapView.swift; sourceTree = "<group>"; };
 		79B2CA4F286A311400F8928F /* LocationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListView.swift; sourceTree = "<group>"; };
 		79B2CA51286A312B00F8928F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		79EF159C2872266600E13ACF /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				792E655C286AAD340041973C /* View+Ext.swift */,
 				7908BEDE286BF14A007D2265 /* CKRecord+Ext.swift */,
 				798D9765286CBC1800C7ECFC /* CKAsset+Ext.swift */,
+				79EF159C2872266600E13ACF /* UIImage+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				7908BEE5286C06AD007D2265 /* LocationManager.swift in Sources */,
 				792E655F286AAE8F0041973C /* DDGButton.swift in Sources */,
 				792E6559286AA6060041973C /* AvatarView.swift in Sources */,
+				79EF159D2872266600E13ACF /* UIImage+Ext.swift in Sources */,
 				798D976B286CD28F00C7ECFC /* OnboardingView.swift in Sources */,
 				79B2CA4A286A306200F8928F /* Color+Ext.swift in Sources */,
 			);
