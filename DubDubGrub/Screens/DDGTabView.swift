@@ -31,15 +31,8 @@ struct DDGTabView: View {
         }
         .accentColor(.brandPrimary)
         .onAppear {
-            let appearance              = UITabBarAppearance()
-            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-            appearance.backgroundColor  = UIColor.systemBackground.withAlphaComponent(0.03)
-            UITabBar
-                .appearance()
-                .standardAppearance     = appearance
-            UITabBar
-                .appearance()
-                .scrollEdgeAppearance   = appearance
+            CloudKitManager.shared.getUserRecord()
+            setUITabBarAppearance()
         }
     }
 }
@@ -50,3 +43,19 @@ struct DDGTabView_Previews: PreviewProvider {
             .environmentObject(LocationManager())
     }
 }
+
+extension DDGTabView {
+    
+    func setUITabBarAppearance() {
+        let appearance              = UITabBarAppearance()
+        appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        appearance.backgroundColor  = UIColor.systemBackground.withAlphaComponent(0.03)
+        UITabBar
+            .appearance()
+            .standardAppearance     = appearance
+        UITabBar
+            .appearance()
+            .scrollEdgeAppearance   = appearance
+    }
+}
+

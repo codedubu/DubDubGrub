@@ -129,12 +129,19 @@
 		792E65B9286BE80F0041973C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				7908BEE4286C06AD007D2265 /* LocationManager.swift */,
-				792E65B7286BE8060041973C /* CloudKitManager.swift */,
-				7908BEE0286BF40C007D2265 /* AlertItem.swift */,
+				795CD268287264B8000B24AD /* Managers */,
 				79B2CA53286A32B400F8928F /* Helpers and Extensions */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		795CD268287264B8000B24AD /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				7908BEE4286C06AD007D2265 /* LocationManager.swift */,
+				792E65B7286BE8060041973C /* CloudKitManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		798D9767286CCB7B00C7ECFC /* Helpers */ = {
@@ -142,6 +149,7 @@
 			children = (
 				792E655A286AAD260041973C /* CustomModifiers.swift */,
 				792E65BA286BE91F0041973C /* Constants.swift */,
+				7908BEE0286BF40C007D2265 /* AlertItem.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -243,8 +251,8 @@
 		79B2CA54286A32C600F8928F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				798D9769286CD28200C7ECFC /* Onboarding */,
 				79B2CA4B286A30C400F8928F /* DDGTabView.swift */,
+				798D9769286CD28200C7ECFC /* Onboarding */,
 				79B2CA55286A32DF00F8928F /* LocationMapView */,
 				79B2CA56286A32E400F8928F /* LocationListView */,
 				79B2CA57286A32EB00F8928F /* ProfileView */,
