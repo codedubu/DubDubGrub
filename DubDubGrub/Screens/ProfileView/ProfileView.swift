@@ -14,64 +14,67 @@ struct ProfileView: View {
     
     
     var body: some View {
-        
-        VStack {
-            ZStack {
-                NameBackgroundView()
+        ZStack {
+            VStack {
+                ZStack {
+                    NameBackgroundView()
+                    
+                    HStack(spacing: 16) {
+                        ZStack {
+                            AvatarView(image: viewModel.avatar, size: 84)
+                            EditImageView()
+                        }
+                        .padding(.leading, 12)
+                        .onTapGesture {
+                            viewModel.isShowingPhotoPicker = true
+                        }
+                        
+                        VStack(spacing: 1) {
+                            TextField("First Name", text: $viewModel.firstName).profileNameStyle()
+                            TextField("Last Name", text: $viewModel.lastName).profileNameStyle()
+                            TextField("Company", text: $viewModel.companyName)
+                        }
+                        .padding(.trailing, 16)
+                    }
+                    .padding()
+                }
                 
-                HStack(spacing: 16) {
-                    ZStack {
-                        AvatarView(image: viewModel.avatar, size: 84)
-                        EditImageView()
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        CharactersRemainView(currentCount: viewModel.bio.count)
+                        
+                        Spacer()
+                        
+                        
+                        Button {
+                            print("stuff")
+                        } label: {
+                            Label("Check out", systemImage: "mappin.and.ellipse")
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .controlSize(.regular)
+                        .tint(.red)
+                        
                     }
-                    .padding(.leading, 12)
-                    .onTapGesture {
-                        viewModel.isShowingPhotoPicker = true
-                    }
-                    
-                    VStack(spacing: 1) {
-                        TextField("First Name", text: $viewModel.firstName).profileNameStyle()
-                        TextField("Last Name", text: $viewModel.lastName).profileNameStyle()
-                        TextField("Company", text: $viewModel.companyName)
-                    }
-                    .padding(.trailing, 16)
+                    TextEditor(text: $viewModel.bio)
+                        .frame(height: 100)
+                        .overlay(RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.secondary, lineWidth:  1))
                 }
-                .padding()
-            }
-            
-            VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    CharactersRemainView(currentCount: viewModel.bio.count)
-                    
-                    Spacer()
-                    
-                    
-                    Button {
-                        print("stuff")
-                    } label: {
-                        Label("Check out", systemImage: "mappin.and.ellipse")
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.regular)
-                    .tint(.red)
-                    
+                .padding(.horizontal, 20)
+                
+                Spacer()
+                
+                Button {
+                    viewModel.createProfile()
+                } label: {
+                    DDGButton(title: "Save Profile")
                 }
-                TextEditor(text: $viewModel.bio)
-                    .frame(height: 100)
-                    .overlay(RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.secondary, lineWidth:  1))
+                .buttonStyling()
+                .padding(.bottom)
             }
-            .padding(.horizontal, 20)
             
-            Spacer()
-            
-            Button {
-                viewModel.createProfile()
-            } label: {
-                DDGButton(title: "Save Profile")
-            }
-            .buttonStyling()
-            .padding(.bottom)
+            if viewModel.isLoading { LoadingView() }
         }
         .navigationTitle("Profile")
         .toolbar {
