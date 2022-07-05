@@ -9,24 +9,20 @@ import SwiftUI
 
 struct LocationDetailView: View {
     
-    let columns: [GridItem] = [GridItem(.flexible()),
-                               GridItem(.flexible()),
-                               GridItem(.flexible())]
-    
-    var location: DDGLocation
+    @ObservedObject var viewModel: LocationDetailViewModel
     
     var body: some View {
         
         VStack(spacing: 16) {
-            BannerImageView(image: location.bannerImage)
+            BannerImageView(image: viewModel.location.bannerImage)
             HStack {
-                AddressView(address: location.address)
+                AddressView(address: viewModel.location.address)
                 
                 Spacer()
             }
             .padding(.horizontal)
             
-            DescriptionView(text: location.description)
+            DescriptionView(text: viewModel.location.description)
             
             Spacer()
             
@@ -36,19 +32,19 @@ struct LocationDetailView: View {
                     .foregroundColor(Color(.secondarySystemBackground))
                 HStack(spacing: 24) {
                     Button {
-                        print("lol")
+                        viewModel.getDirectionsToLocation()
                     } label: {
                         LocationActionButton(color: .brandPrimary, imageName: "location.fill")
                         
                     }
                     
-                    Link(destination: URL(string: location.websiteURL)!, label: {
+                    Link(destination: URL(string: viewModel.location.websiteURL)!, label: {
                         LocationActionButton(color: .brandPrimary, imageName: "network")
                         
                     })
                     
                     Button {
-                        print("lol")
+                        viewModel.callLocation()
                     } label: {
                         LocationActionButton(color: .brandPrimary, imageName: "phone.fill")
                         
@@ -72,7 +68,7 @@ struct LocationDetailView: View {
                 .bold()
             
             ScrollView {
-                LazyVGrid(columns: columns) {
+                LazyVGrid(columns: viewModel.columns) {
                     FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "River")
                     FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "River")
                     FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "River")
@@ -84,7 +80,10 @@ struct LocationDetailView: View {
                 }
             }
         }
-        .navigationTitle(location.name)
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
+        }
+        .navigationTitle(viewModel.location.name)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -92,7 +91,7 @@ struct LocationDetailView: View {
 struct LocationDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            LocationDetailView(location: DDGLocation(record: MockData.location))
+            LocationDetailView(viewModel: LocationDetailViewModel(location: DDGLocation(record: MockData.location)))
         }
     }
 }
