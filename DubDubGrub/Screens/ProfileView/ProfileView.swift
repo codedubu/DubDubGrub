@@ -66,9 +66,9 @@ struct ProfileView: View {
                 Spacer()
                 
                 Button {
-                    viewModel.createProfile()
+                    viewModel.profileContext == .create ? viewModel.createProfile() : viewModel.updateProfile()
                 } label: {
-                    DDGButton(title: "Save Profile")
+                    DDGButton(title: viewModel.profileContext == .create ? "Create Profile" : "Update Profile")
                 }
                 .buttonStyling()
                 .padding(.bottom)
