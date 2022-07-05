@@ -23,6 +23,19 @@ struct MockData {
         
         return record
     }
+    
+    static var profile: CKRecord {
+        let record = CKRecord(recordType: RecordType.location)
+        
+        record.setValuesForKeys([
+            DDGProfile.kFirstName       : "Test",
+            DDGProfile.kLastName        : "User",
+            DDGProfile.kCompanyName     : "Self Made",
+            DDGProfile.kBio             : "This is a testing of a testing app. It tests the testing of tests that tests, testingly. Isn't that quite testifying? Testimonious, Batman, it's a test!",
+        ])
+        
+        return record
+    }
 }
 
 

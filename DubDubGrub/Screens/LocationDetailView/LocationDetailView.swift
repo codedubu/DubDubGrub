@@ -12,72 +12,75 @@ struct LocationDetailView: View {
     @ObservedObject var viewModel: LocationDetailViewModel
     
     var body: some View {
-        
-        VStack(spacing: 16) {
-            BannerImageView(image: viewModel.location.bannerImage)
-            HStack {
-                AddressView(address: viewModel.location.address)
-                
-                Spacer()
-            }
-            .padding(.horizontal)
-            
-            DescriptionView(text: viewModel.location.description)
-            
-            Spacer()
-            
-            ZStack {
-                Capsule()
-                    .frame(height: 80)
-                    .foregroundColor(Color(.secondarySystemBackground))
-                HStack(spacing: 24) {
-                    Button {
-                        viewModel.getDirectionsToLocation()
-                    } label: {
-                        LocationActionButton(color: .brandPrimary, imageName: "location.fill")
-                        
-                    }
+        ZStack {
+            VStack(spacing: 16) {
+                BannerImageView(image: viewModel.location.bannerImage)
+                HStack {
+                    AddressView(address: viewModel.location.address)
                     
-                    Link(destination: URL(string: viewModel.location.websiteURL)!, label: {
-                        LocationActionButton(color: .brandPrimary, imageName: "network")
-                        
-                    })
-                    
-                    Button {
-                        viewModel.callLocation()
-                    } label: {
-                        LocationActionButton(color: .brandPrimary, imageName: "phone.fill")
-                        
-                    }
-                    
-                    Button {
-                        print("lol")
-                    } label: {
-                        LocationActionButton(color: .brandPrimary, imageName: "person.fill.checkmark")
-                        
-                    }
-                    
+                    Spacer()
                 }
                 .padding(.horizontal)
+                
+                DescriptionView(text: viewModel.location.description)
+                
+                Spacer()
+                
+                ZStack {
+                    Capsule()
+                        .frame(height: 80)
+                        .foregroundColor(Color(.secondarySystemBackground))
+                    HStack(spacing: 24) {
+                        Button {
+                            viewModel.getDirectionsToLocation()
+                        } label: {
+                            LocationActionButton(color: .brandPrimary, imageName: "location.fill")
+                            
+                        }
+                        
+                        Link(destination: URL(string: viewModel.location.websiteURL)!, label: {
+                            LocationActionButton(color: .brandPrimary, imageName: "network")
+                            
+                        })
+                        
+                        Button {
+                            viewModel.callLocation()
+                        } label: {
+                            LocationActionButton(color: .brandPrimary, imageName: "phone.fill")
+                            
+                        }
+                        
+                        Button {
+                            print("lol")
+                        } label: {
+                            LocationActionButton(color: .brandPrimary, imageName: "person.fill.checkmark")
+                            
+                        }
+                        
+                    }
+                    .padding(.horizontal)
+                }
+                
+                Spacer()
+                
+                Text("Who's Here?")
+                    .font(.title2)
+                    .bold()
+                
+                ScrollView {
+                    LazyVGrid(columns: viewModel.columns) {
+                        FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "River")
+                            .onTapGesture {
+                                viewModel.isShowingProfileModal = true
+                            }
+                        
+                        
+                    }
+                }
             }
             
-            Spacer()
-            
-            Text("Who's Here?")
-                .font(.title2)
-                .bold()
-            
-            ScrollView {
-                LazyVGrid(columns: viewModel.columns) {
-                    FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "River")
-                    FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "River")
-                    FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "River")
-                    FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "River")
-                    FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "River")
-                    FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "River")
-
-
-                }
+            if viewModel.isShowingProfileModal {
+                ProfileModalView(isShowingProfileModal: $viewModel.isShowingProfileModal, profile: DDGProfile(record: MockData.profile))
             }
         }
         .alert(item: $viewModel.alertItem) { alertItem in
@@ -111,7 +114,7 @@ struct LocationActionButton: View {
                 .scaledToFit()
                 .foregroundColor(.white)
                 .frame(width: 22, height: 22)
-
+            
         }
     }
 }
