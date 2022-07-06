@@ -136,7 +136,6 @@
 		792E65B9286BE80F0041973C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				795CD268287264B8000B24AD /* Managers */,
 				79B2CA53286A32B400F8928F /* Helpers and Extensions */,
 			);
 			path = Utilities;
@@ -230,6 +229,7 @@
 			children = (
 				79B2CA45286A2DE900F8928F /* DubDubGrub.entitlements */,
 				79B2CA37286A2C4300F8928F /* DubDubGrubApp.swift */,
+				795CD268287264B8000B24AD /* Managers */,
 				792E65B0286BC7BA0041973C /* Model */,
 				792E6560286AB1300041973C /* Views */,
 				79B2CA54286A32C600F8928F /* Screens */,
