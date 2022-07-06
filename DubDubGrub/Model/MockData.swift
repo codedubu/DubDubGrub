@@ -25,7 +25,7 @@ struct MockData {
     }
     
     static var profile: CKRecord {
-        let record = CKRecord(recordType: RecordType.location)
+        let record = CKRecord(recordType: RecordType.profile)
         
         record.setValuesForKeys([
             DDGProfile.kFirstName       : "Test",

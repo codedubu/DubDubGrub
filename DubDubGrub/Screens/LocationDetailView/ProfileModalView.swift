@@ -36,7 +36,7 @@ struct ProfileModalView: View {
             .background(Color(.secondarySystemBackground))
             .cornerRadius(16)
             .overlay(Button {
-                    isShowingProfileModal = false
+                withAnimation { isShowingProfileModal = false }
                 } label: {
                     XDismissButton()
                 }, alignment: .topTrailing)
