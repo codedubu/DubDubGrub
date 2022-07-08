@@ -50,33 +50,46 @@ struct LocationDetailView: View {
                             
                         }
                         
-                        Button {
-                            viewModel.updateCheckInStatus(to: .checkedOut)
-                        } label: {
-                            LocationActionButton(color: .brandPrimary, imageName: "person.fill.checkmark")
+                        if let _ = CloudKitManager.shared.profileRecordID {
+                            Button {
+                                viewModel.updateCheckInStatus(to: viewModel.isCheckedIn ? .checkedOut : .checkedIn)
+                            } label: {
+                                LocationActionButton(color: viewModel.isCheckedIn ? .grubRed: .brandPrimary,
+                                                     imageName: viewModel.isCheckedIn ? "person.fill.xmark" : "person.fill.checkmark")
+                            }
                             
                         }
-                        
                     }
-                    .padding(.horizontal)
                 }
-                
-                Spacer()
+                .padding(.horizontal)
                 
                 Text("Who's Here?")
                     .font(.title2)
                     .bold()
                 
-                ScrollView {
-                    LazyVGrid(columns: viewModel.columns) {
-                        FirstNameAvatarView(image: PlaceholderImage.avatar, firstName: "River")
-                            .onTapGesture {
-                                viewModel.isShowingProfileModal = true
+                ZStack {
+                    if viewModel.checkedInProfiles.isEmpty {
+                        Text("Nobody's Here ☹️")
+                            .bold()
+                            .font(.title2)
+                            .foregroundColor(.secondary)
+                            .padding(.top, 30)
+                    } else {
+                        ScrollView {
+                            LazyVGrid(columns: viewModel.columns) {
+                                ForEach(viewModel.checkedInProfiles) { profile in
+                                    FirstNameAvatarView(profile: profile)
+                                        .onTapGesture {
+                                            viewModel.isShowingProfileModal = true
+                                        }
+                                }
                             }
-                        
-                        
+                        }
                     }
+                    
+                    if viewModel.isLoading { LoadingView() }
                 }
+                Spacer()
             }
             
             if viewModel.isShowingProfileModal {
@@ -93,6 +106,10 @@ struct LocationDetailView: View {
                 .animation(.easeOut)
                 .zIndex(2)
             }
+        }
+        .onAppear {
+            viewModel.getCheckedInProfiles()
+            viewModel.getCheckedInStatus()
         }
         .alert(item: $viewModel.alertItem) { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
@@ -133,14 +150,13 @@ struct LocationActionButton: View {
 
 struct FirstNameAvatarView: View {
     
-    var image: UIImage
-    var firstName: String
+    var profile: DDGProfile
     
     var body: some View {
         
         VStack {
-            AvatarView(image: image, size: 64)
-            Text(firstName)
+            AvatarView(image: profile.avatarImage , size: 64)
+            Text(profile.firstName)
                 .bold()
                 .lineLimit(1)
                 .minimumScaleFactor(0.75)

@@ -153,9 +153,9 @@
 		795CD26B2874CE57000B24AD /* LocationDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				795CD26E2874D438000B24AD /* ProfileModalView.swift */,
 				795CD26C2874CE65000B24AD /* LocationDetailViewModel.swift */,
 				792E6553286A41080041973C /* LocationDetailView.swift */,
+				795CD26E2874D438000B24AD /* ProfileModalView.swift */,
 			);
 			path = LocationDetailView;
 			sourceTree = "<group>";

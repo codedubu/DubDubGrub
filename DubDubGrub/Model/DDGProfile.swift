@@ -8,9 +8,9 @@
 import CloudKit
 import UIKit
 
-struct DDGProfile {
+struct DDGProfile: Identifiable {
         
-    let ckRecordID: CKRecord.ID
+    let id: CKRecord.ID
     let firstName: String
     let lastName: String
     let bio: String
@@ -19,7 +19,7 @@ struct DDGProfile {
     var isCheckedIn: CKRecord.Reference? = nil
 
     init(record: CKRecord) {
-        ckRecordID  = record.recordID
+        id          = record.recordID
         firstName   = record[DDGProfile.kFirstName] as? String ?? "N/A"
         lastName    = record[DDGProfile.kLastName] as? String ?? "N/A"
         bio         = record[DDGProfile.kBio] as? String ?? "N/A"
