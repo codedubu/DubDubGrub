@@ -83,8 +83,10 @@ final class LocationDetailViewModel: ObservableObject {
                 switch checkInStatus {
                 case .checkedIn:
                     record[DDGProfile.kIsCheckedIn] = CKRecord.Reference(recordID: location.id, action: .none)
+                    record[DDGProfile.kIsCheckedInNilCheck] = 1
                 case .checkedOut:
                     record[DDGProfile.kIsCheckedIn] = nil
+                    record[DDGProfile.kIsCheckedInNilCheck] = nil
                 }
                 
                 // Save the updated profile.
@@ -122,7 +124,7 @@ final class LocationDetailViewModel: ObservableObject {
     }
     
     func getCheckedInProfiles() {
-        showLoadingView()
+       showLoadingView()
         CloudKitManager.shared.getCheckedInProfiles(for: location.id) { result in
             DispatchQueue.main.async { [self] in
                 

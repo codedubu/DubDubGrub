@@ -70,8 +70,38 @@ final class CloudKitManager {
             
             let profiles = records.map { $0.convertToDDGProfile() }
             completion(.success(profiles))
-
+            
         }
+    }
+    
+    func getCheckedInProfilesDictionary(completion: @escaping (Result<[CKRecord.ID : [DDGProfile]], Error>) -> Void) {
+        let predicate = NSPredicate(format: "isCheckedInNilCheck == 1")
+        let query = CKQuery(recordType: RecordType.profile, predicate: predicate)
+        let operation = CKQueryOperation(query: query)
+        //        operation.desiredKeys = [DDGProfile.kIsCheckedIn, DDGProfile.kAvatarAsset]
+        
+        var checkedInProfiles: [CKRecord.ID : [DDGProfile]] = [ : ]
+        
+        operation.recordFetchedBlock = { record in
+            // Build our dictionary
+            let profile = DDGProfile(record: record)
+            
+            guard let locationReference = profile.isCheckedIn else { return }
+            
+            checkedInProfiles[locationReference.recordID, default: []].append(profile)
+            // Chipotle : [Riv, Div]
+            // Mezcals  : [Brokk]
+        }
+        
+        operation.queryCompletionBlock = { cursor, error in
+            guard error == nil else {
+                completion(.failure(error!))
+                return
+            }
+            // handle cursor later
+            completion(.success(checkedInProfiles))
+        }
+        CKContainer.default().publicCloudDatabase.add(operation)
     }
     
     func batchSave(records: [CKRecord], completion: @escaping (Result<[CKRecord], Error>) -> Void) {

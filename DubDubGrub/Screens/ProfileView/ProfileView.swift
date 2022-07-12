@@ -45,15 +45,17 @@ struct ProfileView: View {
                         
                         Spacer()
                         
-                        
-                        Button {
-                            print("stuff")
-                        } label: {
-                            Label("Check out", systemImage: "mappin.and.ellipse")
+                        if viewModel.isCheckedIn {
+                            Button {
+                                viewModel.checkOut()
+                            } label: {
+                                Label("Check out", systemImage: "mappin.and.ellipse")
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .font(.system(size: 14, weight: .semibold))
+                            .controlSize(.regular)
+                            .tint(.grubRed)
                         }
-                        .buttonStyle(.borderedProminent)
-                        .controlSize(.regular)
-                        .tint(.red)
                         
                     }
                     TextEditor(text: $viewModel.bio)
@@ -84,7 +86,10 @@ struct ProfileView: View {
                 Image(systemName: "keyboard.chevron.compact.down")
             }
         }
-        .onAppear { viewModel.getProfile() }
+        .onAppear {
+            viewModel.getProfile()
+            viewModel.getCheckedInStatus()
+        }
         .alert(item: $viewModel.alertItem) { alertItem in
             Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
         }
