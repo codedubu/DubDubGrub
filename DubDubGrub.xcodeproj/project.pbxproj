@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79011CFD287DF28700ABA5D7 /* LocationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79011CFC287DF28700ABA5D7 /* LocationListViewModel.swift */; };
 		7908BEDF286BF14A007D2265 /* CKRecord+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7908BEDE286BF14A007D2265 /* CKRecord+Ext.swift */; };
 		7908BEE1286BF40C007D2265 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7908BEE0286BF40C007D2265 /* AlertItem.swift */; };
 		7908BEE3286C0291007D2265 /* LocationMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7908BEE2286C0291007D2265 /* LocationMapViewModel.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		79011CFC287DF28700ABA5D7 /* LocationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewModel.swift; sourceTree = "<group>"; };
 		7908BEDE286BF14A007D2265 /* CKRecord+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+Ext.swift"; sourceTree = "<group>"; };
 		7908BEE0286BF40C007D2265 /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		7908BEE2286C0291007D2265 /* LocationMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapViewModel.swift; sourceTree = "<group>"; };
@@ -98,17 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				792E6563286AB1600041973C /* Custom Views */,
-				792E6562286AB15D0041973C /* Cells */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		792E6562286AB15D0041973C /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				792E6556286AA5C30041973C /* LocationCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		792E6563286AB1600041973C /* Custom Views */ = {
@@ -290,7 +283,9 @@
 		79B2CA56286A32E400F8928F /* LocationListView */ = {
 			isa = PBXGroup;
 			children = (
+				792E6556286AA5C30041973C /* LocationCell.swift */,
 				79B2CA4F286A311400F8928F /* LocationListView.swift */,
+				79011CFC287DF28700ABA5D7 /* LocationListViewModel.swift */,
 			);
 			path = LocationListView;
 			sourceTree = "<group>";
@@ -405,6 +400,7 @@
 				792E655D286AAD340041973C /* View+Ext.swift in Sources */,
 				792E6557286AA5C30041973C /* LocationCell.swift in Sources */,
 				7908BEDF286BF14A007D2265 /* CKRecord+Ext.swift in Sources */,
+				79011CFD287DF28700ABA5D7 /* LocationListViewModel.swift in Sources */,
 				7908BEE5286C06AD007D2265 /* LocationManager.swift in Sources */,
 				792E655F286AAE8F0041973C /* DDGButton.swift in Sources */,
 				792E6559286AA6060041973C /* AvatarView.swift in Sources */,
