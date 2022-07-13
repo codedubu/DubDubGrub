@@ -32,7 +32,7 @@ struct LocationCell: View {
                     .padding(.trailing)
                 
                 if profiles.isEmpty {
-                    Text("Nobody has checked in")
+                    Text("Nobody's here yet!")
                         .fontWeight(.semibold)
                         .foregroundColor(.secondary)
                         .padding(.top, 2)

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DDGTabView: View {
     
+    @StateObject private var viewModel = DDGTabViewModel()
+    
     var body: some View {
         
         TabView {
@@ -29,10 +31,14 @@ struct DDGTabView: View {
                 Label("Profile", systemImage: "person")
             }
         }
-        .accentColor(.brandPrimary)
         .onAppear {
             CloudKitManager.shared.getUserRecord()
+            viewModel.runStartupChecks()
             setUITabBarAppearance()
+        }
+        .accentColor(.brandPrimary)
+        .sheet(isPresented: $viewModel.isShowingOnboardingView, onDismiss: viewModel.checkIfLocationServicesIsEnabled) {
+            OnboardingView(isShowingOnboardingView: $viewModel.isShowingOnboardingView)
         }
     }
 }
